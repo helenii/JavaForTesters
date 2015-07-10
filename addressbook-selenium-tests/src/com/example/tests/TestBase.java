@@ -68,7 +68,7 @@ public class TestBase {
 		if (rnd.nextInt(3) == 0) {
 			return "-";
 		} else {
-			return rnd.nextInt(31) + "";
+			return rnd.nextInt(31) + 1 + "";
 		}
 	}
 
