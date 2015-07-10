@@ -1,6 +1,7 @@
 package com.example.tests;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -51,8 +52,8 @@ public class TestBase {
 			contact.workphone = generateRandomString();
 			contact.email = generateRandomString();
 			contact.email2 = generateRandomString();
-			contact.bday = selectRandomDropdown("bday");
-			contact.bmonth = selectRandomDropdown("bmonth");
+			contact.bday = selectRandomBday();
+			contact.bmonth = selectRandomBmonth();
 			contact.byear = generateRandomYear();
 			//contact.group = selectRandomDropdown("new_group");
 			contact.address2 = generateRandomString();
@@ -60,6 +61,26 @@ public class TestBase {
 			list.add(new Object[]{contact});
 		}
 		return list.iterator();
+	}
+
+	private String selectRandomBday() {
+		Random rnd = new Random();
+		if (rnd.nextInt(3) == 0) {
+			return "-";
+		} else {
+			return rnd.nextInt(31) + "";
+		}
+	}
+
+	private String selectRandomBmonth() {
+		List<String> month = Arrays.asList("January", "February", "March", "April", "May", "June",
+				"July", "August", "September", "October", "November", "December");
+		Random rnd = new Random();
+		if (rnd.nextInt(3) == 0) {
+			return "-";
+		} else {
+			return month.get(rnd.nextInt(month.size()));
+		}
 	}
 
 	public String generateRandomYear() {

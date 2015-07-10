@@ -40,7 +40,7 @@ public class ContactHelper extends HelperBase{
 	}
 
 	private void initContactModification(int index) {
-		click(By.xpath("//a[contains(@href,'id')]/img[@title='Edit'][" + (index + 1) + "]"));
+		click(By.xpath("(//a[contains(@href,'id')]/img[@title='Edit'])[" + (index + 1) + "]"));
 	}
 
 	public void modifyContact(int index) {

@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
 public class ContactModificationTests extends TestBase {
 
 	@Test(dataProvider = "randomValidContactGenerator")
@@ -19,7 +18,7 @@ public class ContactModificationTests extends TestBase {
 
 		Random rnd = new Random();
 		int index = rnd.nextInt(oldList.size() - 1);
-
+		
 		//action
 		app.getContactHelper().modifyContact(index);
 		app.getContactHelper().fillContactForm(contact);

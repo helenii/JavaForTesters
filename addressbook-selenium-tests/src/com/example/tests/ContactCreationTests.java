@@ -3,10 +3,7 @@ package com.example.tests;
 import java.util.Collections;
 import java.util.List;
 
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import com.example.fw.ApplicationManager;
 
 import static org.testng.Assert.assertEquals;
 
