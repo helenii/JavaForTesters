@@ -58,12 +58,17 @@ public class ContactHelper extends HelperBase{
 
 	public List<ContactData> getContacts() {
 		List<ContactData> contacts = new ArrayList<ContactData>();
-		List<WebElement> rows = driver.findElements(By.xpath("//tr[@class]/td[2]"));
+		List<WebElement> rows = getContactRows();
 		for (WebElement row : rows) {
 			ContactData contact = new ContactData();
-			contact.lastname = row.getText();
+			contact.lastname = row.findElement(By.xpath(".//td[2]")).getText();
+			contact.firstname = row.findElement(By.xpath(".//td[3]")).getText();
 			contacts.add(contact);
 		}
 		return contacts;
+	}
+
+	private List<WebElement> getContactRows() {
+		return driver.findElements(By.xpath("//tr[@class]"));
 	}
 }
