@@ -1,26 +1,27 @@
 package com.example.tests;
 
-import static org.testng.Assert.assertEquals;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
-import org.testng.annotations.Test;
 
 public class ContactModificationTests extends TestBase {
 
-	@Test
-	public void modifySomeContact() {
+	@Test(dataProvider = "randomValidContactGenerator")
+	public void modifySomeContact(ContactData contact) {
 		app.getNavigationHelper().openMainPage();
 
 		//save state
 		List<ContactData> oldList = app.getContactHelper().getContacts();
 
+		Random rnd = new Random();
+		int index = rnd.nextInt(oldList.size() - 1);
+
 		//action
-		app.getContactHelper().modifyContact(0);
-		ContactData contact = new ContactData();
-		contact.lastname = "new lastname";
-		contact.firstname = "new firstname";
+		app.getContactHelper().modifyContact(index);
 		app.getContactHelper().fillContactForm(contact);
 		app.getContactHelper().submitContactModification();
 		app.getNavigationHelper().openMainPage();
@@ -29,10 +30,10 @@ public class ContactModificationTests extends TestBase {
 		List<ContactData> newList = app.getContactHelper().getContacts();
 
 		//compare states
-		oldList.remove(0);
+		oldList.remove(index);
 		oldList.add(contact);
 		Collections.sort(oldList);
-		assertEquals(newList, oldList);
+		AssertJUnit.assertEquals(newList, oldList);
 	}
 
 }

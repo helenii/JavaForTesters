@@ -65,6 +65,5 @@ public class ContactHelper extends HelperBase{
 			contacts.add(contact);
 		}
 		return contacts;
-	}	
-
+	}
 }
