@@ -30,10 +30,10 @@ public class TestBase {
 	public Iterator<Object[]> randomValidGroupGenerator() {
 		List<Object[]>list = new ArrayList<Object[]>();
 		for (int i = 0; i < 5; i++) {
-			GroupData group = new GroupData();
-			group.name = generateRandomString();			
-			group.header = generateRandomString();
-			group.footer = generateRandomString();
+			GroupData group = new GroupData()
+			.withName(generateRandomString())
+			.withHeader(generateRandomString())
+			.withFooter(generateRandomString());
 			list.add(new Object[]{group});
 		}
 		return list.iterator();
@@ -43,21 +43,21 @@ public class TestBase {
 	public Iterator<Object[]> randomValidContactGenerator() {
 		List<Object[]> list = new ArrayList<Object[]>();
 		for (int i = 0; i < 5; i++) {
-			ContactData contact = new ContactData();
-			contact.firstname = generateRandomString();
-			contact.lastname = generateRandomString();
-			contact.address = generateRandomString();
-			contact.homephone = generateRandomString();
-			contact.mobilephone = generateRandomString();
-			contact.workphone = generateRandomString();
-			contact.email = generateRandomString();
-			contact.email2 = generateRandomString();
-			contact.bday = selectRandomBday();
-			contact.bmonth = selectRandomBmonth();
-			contact.byear = generateRandomYear();
-			//contact.group = selectRandomDropdown("new_group");
-			contact.address2 = generateRandomString();
-			contact.phone2 = generateRandomString();
+			ContactData contact = new ContactData()
+			.withFirstname(generateRandomString())
+			.withLastname(generateRandomString())
+			.withAddress(generateRandomString())
+			.withHomephone(generateRandomString())
+			.withMobilephone(generateRandomString())
+			.withWorkphone(generateRandomString())
+			.withEmail(generateRandomString())
+			.withEmail2(generateRandomString())
+			.withBday(selectRandomBday())
+			.withBmonth(selectRandomBmonth())
+			.withByear(generateRandomYear())
+			//.withGroup(selectRandomDropdown())
+			.withAddress2(generateRandomString())
+			.withPhone2(generateRandomString());
 			list.add(new Object[]{contact});
 		}
 		return list.iterator();
