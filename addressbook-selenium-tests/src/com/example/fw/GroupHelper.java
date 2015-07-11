@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import com.example.tests.ContactData;
 import com.example.tests.GroupData;
 import com.example.utils.SortedListOf;
 
@@ -24,14 +25,13 @@ public class GroupHelper extends HelperBase{
 	}
 
 	private void rebuildCache() {
-		SortedListOf<GroupData> groups = new SortedListOf<GroupData>();
-
+		cachedGroups = new SortedListOf<GroupData>();
 		manager.navigateTo().groupsPage();
 		List<WebElement> checkboxes = driver.findElements(By.name("selected[]"));
 		for (WebElement checkbox : checkboxes) {
 			String title = checkbox.getAttribute("title");
 			String name = title.substring("Select (".length(), title.length() - ")".length());
-			groups.add(new GroupData().withName(name));
+			cachedGroups.add(new GroupData().withName(name));
 		}
 	}
 

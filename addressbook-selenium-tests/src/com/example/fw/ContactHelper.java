@@ -25,14 +25,14 @@ public class ContactHelper extends HelperBase{
 	}
 
 	private void rebuildContactCache() {
-		SortedListOf<ContactData> contacts = new SortedListOf<ContactData>();
+		cachedContacts = new SortedListOf<ContactData>();
 
 		manager.navigateTo().mainPage();
 		List<WebElement> rows = getContactRows();
 		for (WebElement row : rows) {
 			String lastname = row.findElement(By.xpath(".//td[2]")).getText();
 			String firstname = row.findElement(By.xpath(".//td[3]")).getText();
-			contacts.add(new ContactData().withLastname(lastname).withFirstname(firstname));
+			cachedContacts.add(new ContactData().withLastname(lastname).withFirstname(firstname));
 		}		
 	}
 
