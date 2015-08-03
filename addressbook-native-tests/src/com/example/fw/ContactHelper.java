@@ -32,7 +32,6 @@ public class ContactHelper extends HelperBase {
 
 	public Contact getFirstContact() {
 		manager.getAutoItHelper()
-			.winWaitAndActivate("Addressbook Portable", "", 5000)
 			.focus("TListView1")
 			.send("{DOWN}{SPACE}")
 			.click("Edit")
