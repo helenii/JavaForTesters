@@ -13,16 +13,16 @@ public class ContactRemovalTests extends TestBase {
 	@Test
 	public void deleteSomeContact() {
 		//save state
-		SortedListOf<ContactData> oldList = app.getContactHelper().getContacts();
+		SortedListOf<ContactData> oldList = app.getContactHelper().getUiContacts();
 
 		Random rnd = new Random();
-		int index = rnd.nextInt(oldList.size() - 1);
+		int index = rnd.nextInt(oldList.size());
 
 		//action
 		app.getContactHelper().deleteContact(index);
 
 		//save new state
-		SortedListOf<ContactData> newList = app.getContactHelper().getContacts();
+		SortedListOf<ContactData> newList = new SortedListOf<ContactData>(app.getHibernateHelper().listContacts());
 
 		//compare states
 		assertThat(newList, equalTo(oldList.without(index)));
